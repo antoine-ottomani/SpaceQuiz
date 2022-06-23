@@ -2,7 +2,7 @@
 <header>
 
     <!-- PARTIE LOGO + TITRE -->
-    <a class="brand" href="home">
+    <a class="brand" href="?page=home">
         <img class="logo" src="./public/img/utils/logo.png" />
         <p class="title-brand">SpaceQuiz</p>
     </a>
@@ -17,7 +17,7 @@
     <nav class="nav">
         <ul class="menu">
             <li>
-                <a href="home">Accueil</a>
+                <a href="?page=home">Accueil</a>
             </li>
             <li>
                 <a href="#">Thèmes</a>
@@ -30,7 +30,7 @@
                 <a href="#">Mon compte</a>
             </li>
             <li>
-                <a href="add_quiz">Ajout</a>
+                <a href="?page=add_quiz">Ajout</a>
             </li>
 
         </ul>
