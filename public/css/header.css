@@ -1,0 +1,75 @@
+/* ==============================
+        PARTIE DU HEADER 
+  ============================= */
+header {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--dark-color);
+}
+
+/* PARTIE DU LOGO + NOM DU SITE */
+.brand {
+  width: 120px;
+  display: flex;
+}
+.brand > img {
+  width: 100%;
+}
+.brand > p {
+  color: var(--light-bg-color);
+  margin: auto 20px;
+  font-family: var(--font-fam-navbar);
+  font-size: 1.5rem;
+}
+
+/* CONTAINEUR DE LA NAVBAR */
+#wrap {
+  width: 40%;
+  height: 60px;
+  margin: 0;
+  z-index: 99;
+  position: relative;
+  margin: auto 30px;
+}
+
+/* 1ER UL */
+.navbar {
+  margin: 0;
+  height: 60px;
+  padding: 0;
+  position: absolute;
+}
+
+.navbar li {
+  height: auto;
+  width: 135.8px;
+  float: left;
+  text-align: center;
+  list-style: none;
+  font-family: var(--font-fam-navbar);
+  padding: 0;
+  margin: 0;
+}
+
+.navbar a {
+  padding: 18px 0;
+  text-decoration: none;
+  color: var(--light-bg-color);
+  display: block;
+}
+
+.navbar li:hover,
+a:hover {
+  background-color: var(--dark-color);
+}
+
+.navbar li ul {
+  display: none;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li:hover ul {
+  display: block;
+}

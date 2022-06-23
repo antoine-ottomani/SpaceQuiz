@@ -1,0 +1,39 @@
+/* DÉFINITION DE VARIABLES CSS 
+COMMUNES À TOUT LE SITE */
+:root {
+  --main-bg-color: #f8f8f8;
+  --dark-color: #1d1d1d;
+  --font-fam-navbar: "Exo", sans-serif;
+  --light-bg-color: #ffffff;
+}
+
+/* RESET AVEC SELECTEUR UNIVERSEL */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-bg-color);
+}
+
+main {
+  max-width: 1100px;
+  display: flex;
+  margin: 100px auto;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
