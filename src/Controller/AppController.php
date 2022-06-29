@@ -15,11 +15,11 @@ class AppController extends Controller
     public function home(): void
     {
         $previewManager = new CategoryManager();
-        $category = $previewManager->getCategories();
+        $categoryList = $previewManager->allCategories();
 
         $this->renderView('app/home.php', [
             'title' => 'Accueil',
-            'category' => $category
+            'listCategory' => $categoryList
         ]);
     }
 }

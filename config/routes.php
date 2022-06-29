@@ -17,13 +17,17 @@ return [
         'method'     => 'showPreview'
     ],
 
-    'moon_quiz' => [
+    'quiz_content' => [
         'controller' => App\Controller\QuizContainerController::class,
         'method'     => 'showQuiz'
     ],
-    'add_quiz' => [
+    'add_quiz_part_one' => [
         'controller'   => App\Controller\QuizManagementController::class,
         'method'       => 'add'
+    ],
+    'add_quiz_part_two' => [
+        'controller'   => App\Controller\QuizManagementController::class,
+        'method'       => 'addAnswers'
     ]
 
 ];

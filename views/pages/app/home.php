@@ -1,11 +1,21 @@
 <section class="home-container">
 
-    <div class="presentation">
+    <div class="banner">
         <h1>Bienvenue sur SpaceQuiz, le site pour tester tes connaissances en Astronomie</h1>
+        <div class="banner-img"></div>
+        <a href="#home-ancre"><i class="fa-solid fa-chevron-down"></i></a>
     </div>
 
-    <div class="container">
+    <div class="introduction">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, earum illum quis in maxime totam optio
+            voluptates corrupti est unde, minima voluptas exercitationem, consequatur vero temporibus iure autem
+            inventore
+            odit.
+        </p>
+    </div>
 
+    <div id="home-ancre" class="container">
         <article class="last-quiz">
             <h2>Derniers quiz ajoutés</h2>
 
@@ -19,16 +29,21 @@
                 <div class="btn-nav left"><i class="fa-solid fa-circle-arrow-left"></i></div>
                 <div class="btn-nav right"><i class="fa-solid fa-circle-arrow-right"></i></div>
             </div>
+
         </article>
 
         <aside class="categories">
-            <h2 class="title-aside">Explorez par catégories</h2>
-            <ul>
-                <?php foreach ($data['category'] as $key => $category) { ?>
-                <li><a href="quiz_preview"><?= $category->getTheme(); ?></a></li>
+            <h2>Explorez par catégories</h2>
 
-                <?php } ?>
+            <ul>
+                <?php foreach ($data['listCategory'] as $category) { ?>
+                <li>
+                    <a href="index.php?page=quiz_preview&id=<?= $category->getId() ?>">
+                        <?= $category->getTheme() ?></a>
+                </li>
+                <?php }; ?>
             </ul>
+
         </aside>
     </div>
 

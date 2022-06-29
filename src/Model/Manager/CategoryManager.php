@@ -8,31 +8,35 @@ use App\Model\Entity\Category;
 class CategoryManager extends Manager
 {
 
-    public function getCategories(): ?array // Retourne soit le type spécifié (array) soit null
+    public function getUniqueCategory(int $id): ?Category
     {
-        $sql = "SELECT theme FROM sq_category";
-        $query = $this->connection->query($sql);
-        $arrayCategories = $query->fetchAll();
-        if (!$arrayCategories || empty($arrayCategories)) {
+
+        $sql = "SELECT * FROM sq_category WHERE id = :id";
+        $query = $this->connection->prepare($sql);
+        $query->execute([
+            'id' => $id
+        ]);
+        $category = $query->fetch();
+        if (!$category || empty($category)) {
             return null;
         }
-        $allCategories = [];
-        foreach ($arrayCategories as $category) {
-            array_push($allCategories, new Category($category));
-        }
-        return $allCategories;
+        return new Category($category);
     }
 
-    public function getCategoryById(): ?Category
 
+
+    public function allCategories(): ?array
     {
-
-        $sql = "SELECT sq_category.theme FROM sq_question INNER JOIN sq_category ON sq_question.id_category = sq_category.id";
+        $sql = 'SELECT * FROM sq_category';
         $query = $this->connection->query($sql);
-        $singleCategory = $query->fetch();
-        if (!$singleCategory || empty($singleCategory)) {
+        $myArray = $query->fetchAll();
+        if (!$myArray || empty($myArray)) {
             return null;
         }
-        return new Category($singleCategory);
+        $categoriesObjects = [];
+        foreach ($myArray as $array) {
+            array_push($categoriesObjects, new Category($array));
+        }
+        return $categoriesObjects;
     }
 }

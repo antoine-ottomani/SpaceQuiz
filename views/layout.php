@@ -8,18 +8,14 @@
     <title><?php if (isset($data['title'])) echo $data['title'] . " - "; ?>SpaceQuiz</title>
 </head>
 </title>
-<link rel="icon" type="image/x-icon" href="./public/img/logo-saturne.png">
+<link rel="icon" type="image/x-icon" href="./public/img/utils/logo.png">
 
 <!-- CSS -->
-<link rel="stylesheet" href="./public/css/reset.css" type="text/css">
-<link rel="stylesheet" href="./public/css/mobile.css" type="text/css">
-<link rel="stylesheet" href="./public/css/desktop.css" type="text/css">
-<!-- FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,300;0,400;0,500;1,300&display=swap"
-    rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./public/css/style.css" type="text/css">
+
 <!-- FONTAWESOME -->
 <script src="https://kit.fontawesome.com/3ddd2945f4.js" crossorigin="anonymous"></script>
+<script src="./public/js/main.js" defer></script>
 
 
 </head>
@@ -37,8 +33,9 @@
 
 
     <!-- INCLUSION DU FOOTER -->
+    <?php require_once './views/partials/_footer.php'; ?>
 
-    <script src="./public/js/main.js"></script>
+
 </body>
 
 </html>

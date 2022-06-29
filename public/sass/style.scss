@@ -1,0 +1,706 @@
+/*  FEUILLE DE STYLE POUR SPACEQUIZ
+    Auteur : Antoine Ottomani
+*/
+
+/* ==============================
+    VARIABLES GLOBALES DU SITE
+============================== */
+$primaryColor: #fb7d00;
+$secondaryColor: #2b75ff;
+$darkColor: #1d1d1d;
+$lightColor: #ffffff;
+
+/* Déclaration des mixins */
+@mixin googleFonts($font) {
+  @import url("https://fonts.googleapis.com/css2?family=#{$font}");
+}
+
+// Déclaration des fonts
+@include googleFonts(Karla);
+@include googleFonts(Lato);
+@include googleFonts(Poppins);
+
+@mixin siteTitle() {
+  font-size: 1.5em;
+  font-family: "Lato", sans-serif;
+  color: $lightColor;
+}
+
+@mixin navLink() {
+  font-family: "Lato", sans-serif;
+  font-size: 1.2em;
+  color: $lightColor;
+}
+
+@mixin headingOne() {
+  font-size: 1em;
+  font-family: "Lato", sans-serif;
+  color: $lightColor;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+@mixin headingTwo() {
+  font-size: 1.5em;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+}
+
+@mixin textContent() {
+  font-family: "Poppins", sans-serif;
+  text-align: justify;
+  font-size: 1em;
+}
+
+/* RESET DE CERTAINS ÉLEMENTS */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ********************************************************************* */
+/* ********************************************************************* */
+/* ********************************************************************* */
+
+/* =============================
+    CONTENEUR PRINCIPAL DU SITE
+  ============================== */
+main {
+  display: flex;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+/* ********************************************************************* */
+/* ********** ========   MOBILE FIRST   ======= *********************** */
+/* ********************************************************************* */
+
+/*HEADER */
+header {
+  background-color: $darkColor;
+  width: 100%;
+  top: 0;
+  position: sticky;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .site-brand {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+    .logo-brand {
+      display: inline-block;
+      margin-bottom: 5px;
+      width: 20%;
+    }
+    .title-brand {
+      @include siteTitle();
+      margin-left: 25%;
+    }
+  }
+
+  /* MENU BURGER POUR MOBILE */
+  .burger {
+    cursor: pointer;
+    float: right;
+    padding: 40px 30px;
+  }
+
+  .burger-line {
+    background: $lightColor;
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 20px;
+  }
+
+  .burger-line::before,
+  .burger-line::after {
+    background: $lightColor;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.1s ease-out;
+    width: 100%;
+  }
+
+  .burger-line::before {
+    top: 5px;
+  }
+
+  .burger-line::after {
+    top: -5px;
+  }
+
+  .side-menu {
+    display: none;
+  }
+
+  .side-menu:checked ~ nav {
+    max-height: 100%;
+    top: 80px;
+  }
+
+  .side-menu:checked ~ .burger .burger-line {
+    background: transparent;
+  }
+
+  .side-menu:checked ~ .burger .burger-line::before {
+    transform: rotate(-45deg);
+    top: 0;
+    z-index: 1;
+  }
+
+  .side-menu:checked ~ .burger .burger-line::after {
+    transform: rotate(45deg);
+    top: 0;
+    z-index: 1;
+  }
+
+  /* BARRE DE NAVIGATION */
+  nav {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: $darkColor;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    top: 80px;
+
+    ul a {
+      @include navLink();
+      display: block;
+      padding: 20px;
+      margin: 30px 40px;
+    }
+  }
+}
+
+/* ********************************************************************* */
+/* ********************************************************************* */
+/* ********************************************************************* */
+
+/* PAGE ACCUEIL */
+.home-container {
+  margin: 0 auto;
+  width: 100%;
+
+  .banner {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0, rgba(0, 0, 0, 0.3) 100%), url(../img/utils/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+
+    h1 {
+      @include headingOne();
+      margin-top: 0;
+      padding-top: 100px;
+    }
+
+    i {
+      display: none;
+      margin-top: 80px;
+      font-size: 30px;
+      color: $lightColor;
+      scroll-behavior: smooth;
+      transform: scale(1);
+      animation: pulse 2s infinite;
+
+      justify-content: center;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+      }
+
+      70% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  .introduction {
+    width: 80%;
+    margin: 30px auto;
+
+    p {
+      @include textContent();
+      margin-top: 10px;
+    }
+  }
+
+  #home-ancre {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column-reverse;
+
+    article {
+      margin-top: 20px;
+      margin-bottom: 100px;
+    }
+
+    h2 {
+      @include headingTwo();
+    }
+
+    img {
+      width: 100%;
+      display: none;
+      margin: auto;
+
+      &.active {
+        display: block;
+        animation: fade 0.8s;
+      }
+    }
+
+    .btn-container {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+
+      .btn-nav {
+        font-size: 25px;
+        margin: 0 15px;
+        cursor: pointer;
+      }
+    }
+
+    aside {
+      background-color: var(--light-bg-color);
+      box-shadow: 3px 3px 20px $darkColor;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+
+        li {
+          padding: 10px;
+          a {
+            width: 70px;
+            height: 70px;
+            border-radius: 50px;
+            border: 2px solid $primaryColor;
+            font-family: "Poppins";
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ********************************************************************* */
+/* ********************************************************************* */
+/* ********************************************************************* */
+
+/* PAGE PREVIEW QUIZ */
+
+.quiz-preview {
+  width: 100%;
+  margin: 30px auto;
+
+  .start-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .cover {
+      width: 350px;
+      padding: 20px;
+      border-radius: 40px;
+    }
+
+    .overlay h1 {
+      margin-top: 10px;
+      font-size: 2em;
+      font-family: "Lato";
+      text-align: center;
+    }
+
+    .description-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        margin-top: 0;
+        font-size: 1.2em;
+        font-family: "Karla";
+      }
+
+      .play {
+        width: 150px;
+        border-radius: 5px;
+        padding: 10px 25px;
+        color: $lightColor;
+        background: $secondaryColor;
+        cursor: pointer;
+        font-size: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family: "Exo";
+        text-align: center;
+      }
+    }
+  }
+}
+
+/* ********************************************************************* */
+/* ********************************************************************* */
+/* ********************************************************************* */
+
+/* PAGE AJOUT DE QUIZ */
+
+.add-quiz {
+  width: 100%;
+  margin: 30px auto;
+
+  .add-container {
+    width: 80%;
+    margin: auto;
+
+    h1 {
+      text-align: center;
+      font-size: 1.5em;
+      font-family: "Lato";
+    }
+
+    h2 {
+      text-align: center;
+      font-family: "Lato";
+      font-size: 1em;
+      padding: 5px;
+      margin-top: 20px;
+    }
+
+    .form-add {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: auto;
+      box-shadow: black 0px 5px 15px;
+      border-radius: 10px;
+      overflow: hidden;
+
+      input[type="text"],
+      input[type="file"],
+      input[type="number"] {
+        padding: 1rem;
+        margin: 0.8rem auto;
+        width: 90%;
+        display: block;
+        border-radius: 0.5rem;
+        outline: none;
+        border: 1px solid #bdbdbb;
+      }
+
+      .add-btn {
+        width: 120px;
+        border-radius: 5px;
+        padding: 10px 25px;
+        color: $lightColor;
+        background: $secondaryColor;
+        cursor: pointer;
+        font-size: 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family: "Exo";
+        text-align: center;
+        margin: 15px auto;
+      }
+    }
+  }
+}
+
+/* ********************************************************************* */
+/* *******  ===== TABLET MEDIA QUERIES : 768 - 992 PX ========   ****** */
+/* ********************************************************************* */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  /* HEADER */
+  header {
+    .site-brand .title-brand {
+      margin-left: 25%;
+      font-size: 1.5em;
+    }
+
+    .side-menu:checked ~ nav {
+      max-height: 100%;
+      top: 140px;
+    }
+  }
+
+  /* PAFE D'ACCUEIL */
+  .home-container {
+    .banner {
+      height: 550px;
+
+      h1 {
+        font-size: 1.6em;
+      }
+    }
+
+    .introduction {
+      margin-top: 40px;
+    }
+  }
+
+  /* PAGE PREVIEW QUIZ */
+  .quiz-preview {
+    width: 80%;
+    margin: 10px auto;
+
+    .start-area {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      box-shadow: 3px 3px 30px $secondaryColor;
+      margin-top: 40px;
+      border-radius: 10px;
+
+      .cover {
+        width: 70%;
+      }
+
+      .play {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  /* PAGE AJOUT DE QUIZ */
+  .add-quiz {
+    margin-top: 100px;
+  }
+}
+
+/* ********************************************************************* */
+/* ********* ======== DESKTOP MEDIA QUERIES  > 992px ========  ********* */
+/* ********************************************************************* */
+@media only screen and (min-width: 992px) {
+  /* PARTIE HEADER */
+  header {
+    .site-brand {
+      .logo-brand {
+        width: 120px;
+      }
+
+      .title-brand {
+        margin-left: 30px;
+      }
+    }
+
+    .burger {
+      display: none;
+    }
+
+    nav {
+      max-height: none;
+      top: 0;
+      position: relative;
+      float: right;
+
+      .menu {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 30px;
+
+        a {
+          margin: 5px;
+        }
+      }
+    }
+  }
+
+  /* PAGE D'ACCUEIL */
+  .home-container {
+    .banner {
+      height: 100%;
+
+      h1 {
+        font-size: 1.5em;
+        padding-top: 300px;
+      }
+    }
+
+    .introduction {
+      width: 70%;
+    }
+
+    #home-ancre {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-around;
+      align-items: center;
+      width: 70%;
+      margin-top: 60px;
+      box-shadow: 0px 0px 10px 4px $darkColor;
+      border-radius: 12px;
+
+      .last-quiz {
+        width: 70%;
+      }
+
+      aside {
+        width: 20%;
+        padding: 0;
+        margin: 0;
+        border: none;
+
+        h2 {
+          font-size: 1em;
+        }
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          li {
+            padding: 15px;
+            width: 150px;
+
+            a {
+              font-family: "Lato";
+              border-radius: 5px;
+              margin: 0;
+              height: 30px;
+              width: 100%;
+              font-size: 1em;
+
+              &:hover {
+                background-color: #fb7d00;
+                color: $lightColor;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* PAGE PREVIEW DU QUIZ */
+  .quiz-preview {
+    width: 80%;
+
+    .start-area {
+      box-shadow: 3px 3px 20px #1c49ab;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin: 70px auto;
+      overflow: hidden;
+      border-radius: 20px;
+      width: 70%;
+
+      .cover-area {
+        position: relative;
+        width: 350px;
+
+        .cover {
+          width: 400px;
+          padding: 20px;
+          border-radius: 25px;
+        }
+
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 30px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 1;
+
+          h1 {
+            text-align: center;
+            font-size: 30px;
+            color: $lightColor;
+            font-family: "Lato";
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .description-area {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        width: 300px;
+        height: 300px;
+        align-items: center;
+        border-left: 1px solid rgb(116, 114, 114);
+        margin-left: 100px;
+      }
+    }
+  }
+
+  /* PAGE AJOUT DE QUIZ */
+  .add-quiz {
+    width: 70%;
+    margin-top: 70px;
+
+    form {
+      .steps {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+    }
+    #btn-1 {
+      margin-top: 30px;
+      border: none;
+    }
+  }
+}

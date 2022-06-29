@@ -10,6 +10,7 @@ class Category
     private ?int $id;
     private ?string $theme;
     private ?string $cover;
+    private ?string $description;
 
     // Le constructeur va renvoyer un tableau avec les propriétés définies au dessus
     public function __construct(array $arrayCategories)
@@ -22,6 +23,9 @@ class Category
 
         if (isset($arrayCategories['cover']))
             $this->cover = (string) $arrayCategories['cover'];
+
+        if (isset($arrayCategories['description']))
+            $this->description = (string) $arrayCategories['description'];
     }
 
 
@@ -53,5 +57,15 @@ class Category
     public function setCover(?string $cover): void
     {
         $this->cover = $cover;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 }
